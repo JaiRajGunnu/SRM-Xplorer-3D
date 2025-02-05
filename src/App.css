@@ -59,6 +59,17 @@ h1 {
   left: 0;      /* Align to the left */
 }
 
+
+.mapboxgl-control-container .mapboxgl-ctrl-bottom-right {
+  display: flex;
+  flex-direction: column; /* Stack controls vertically */
+  align-items: flex-end;   /* Align to the right */
+}
+
+.mapboxgl-control-container .mapboxgl-ctrl-bottom-right .mapboxgl-ctrl-group {
+  order: -1; /* Place zoom controls (navigation control) at the top */
+}
+
 h1 {
     text-align: center;
     padding: 10px;

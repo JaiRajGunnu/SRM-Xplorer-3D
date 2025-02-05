@@ -27,10 +27,10 @@ const MapView = () => {
     }));
 
     // Navigation Control (Zoom buttons)
-    map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
+    map.current.addControl(new mapboxgl.NavigationControl({}), 'bottom-right'); // Zoom buttons
 
     // Fullscreen Control
-    map.current.addControl(new mapboxgl.FullscreenControl(), 'top-left');
+    map.current.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 
     // Geolocate Control (Locate User)
     map.current.addControl(
@@ -41,7 +41,7 @@ const MapView = () => {
         trackUserLocation: true,
         showUserHeading: true
       }),
-      'top-left'
+      'bottom-left'
     );
 
     // Scale Control

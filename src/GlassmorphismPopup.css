@@ -36,8 +36,3 @@
     border-top-color: rgba(255, 255, 255, 0.2); /*Match the background*/
 }
 
-/* App.css */
-.mapboxgl-control-container { /* Or the specific class of the control */
-    z-index: 10; /* Adjust the value as needed */
-    position: relative; /* Or absolute, if necessary */
-  }
