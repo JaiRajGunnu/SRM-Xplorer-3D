@@ -1,0 +1,53 @@
+/* Navbar.css */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* Ensure it's positioned relative to the viewport */
+  z-index: 1000; /* Ensure it stays on top of the map */
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #555; /* Add a border to the search container */
+  border-radius: 5px;      /* Round the corners */
+  overflow: hidden;         /* Hide any overflow from the input or button */
+  background-color: #444;  /* A slightly darker background */
+}
+
+.search-input {
+  padding: 8px 12px;
+  border: none;
+  background: none; /* Make the input transparent */
+  color: white;      /* Set the text color to white */
+  width: 200px; /* Adjust as needed */
+  font-size: 1em;
+  outline: none;     /* Remove the outline when focused */
+}
+
+.search-button {
+  background-color: #666;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth transition */
+}
+
+.search-button:hover {
+  background-color: #888;
+}
+
+/* Style the Font Awesome icon (optional) */
+.search-button svg {
+  vertical-align: middle; /* Align the icon vertically */
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import '../GlassmorphismPopup.css'; // Import your CSS file for the popup
 
 const MapView = () => {
   const mapContainer = useRef(null);
@@ -52,7 +53,7 @@ const MapView = () => {
 
     // Add a Marker (example)
     const marker = new mapboxgl.Marker({
-      color: "#FFFFFF",
+      color: "#ea4335",
       draggable: true
     }).setLngLat([80.0457, 12.8231]) // Same as center, just as an example.
       .addTo(map.current);
@@ -79,6 +80,11 @@ const MapView = () => {
           "fill-extrusion-opacity": 0.8
         }
       });
+
+      // Force resize after style load (and slight delay)
+      setTimeout(() => {
+        map.current.resize();
+      }, 100);
     });
 
     // Example Popup (added on map click)
@@ -97,9 +103,9 @@ const MapView = () => {
         'right': [-markerRadius, (markerHeight - markerRadius) * -1]
       };
 
-      new mapboxgl.Popup({ offset: popupOffsets, className: 'my-class' })
+      new mapboxgl.Popup({ offset: popupOffsets, className: 'glassmorphism-popup' }) //Use glassmorphism-popup class
         .setLngLat(e.lngLat)
-        .setHTML("<h1>Hello World!</h1>")
+        .setHTML("<h4>© 2025 - Jai Raj Gunnu</h4>")
         .setMaxWidth("300px")
         .addTo(map.current);
     });
@@ -113,7 +119,7 @@ const MapView = () => {
       this._map = map;
       this._container = document.createElement('div');
       this._container.className = 'mapboxgl-ctrl';
-      this._container.textContent = 'Hello, world';
+      this._container.textContent = '© 2025 - Jai Raj Gunnu';
       return this._container;
     }
 
@@ -129,7 +135,19 @@ const MapView = () => {
     }
   }, [map.current])
 
-  return <div ref={mapContainer} style={{ width: '100vw', height: '100vh' }} />;
+
+  return (
+    <div
+      ref={mapContainer}
+      style={{
+        width: '100vw',
+        height: '100vh',
+        margin: 0,
+        padding: 0,
+        overflow: 'hidden'
+      }}
+    />
+  );
 };
 
 export default MapView;

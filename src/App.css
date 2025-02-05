@@ -1,3 +1,42 @@
+/*  Basic CSS Reset  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%; /* Ensure full height */
+  overflow: hidden; /* Prevent scrollbars on the body */
+}
+
+#root {
+  height: 100%; /* Make the root element take full height */
+}
+
+.app-container {
+  height: 100%;  /* Make the app container take full height */
+  width: 100%;
+  overflow: hidden; /* Prevent scrollbars on the app container */
+  position: relative; /* Ensure proper positioning */
+}
+
+/* Mapbox elements */
+.mapboxgl-map,
+.mapboxgl-canvas {
+  height: 100%; /* Make the map take full height */
+  width: 100%;  /* Make the map take full width */
+  position: absolute; /* Position the map to fill its container */
+  top: 0;       /* Align to the top */
+  left: 0;      /* Align to the left */
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+}
+
 .App {
   text-align: center;
 }

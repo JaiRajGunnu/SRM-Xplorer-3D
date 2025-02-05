@@ -1,10 +1,12 @@
 import React from 'react';
-import MapView from './MapView';
+import MapView from './components/MapView';
+import Navbar from './components/Navbar'; // Import the Navbar component
+import './App.css';
 
 const App = () => {
   return (
-    <div>
-      <h1>SRM University 3D Campus Map</h1>
+    <div className="app-container">
+      <Navbar /> {/* Add the Navbar component here */}
       <MapView />
     </div>
   );
