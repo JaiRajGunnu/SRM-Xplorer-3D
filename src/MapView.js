@@ -12,7 +12,7 @@ const MapView = () => {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: process.env.REACT_APP_MAPBOX_STYLE_URL, // Use the style URL from .env file
-      center: [80.0457, 12.8231], // SRM University coordinates
+      center: [80.0457, 12.8231], // SRM University coordinates (Default)
       zoom: 17,
       pitch: 60,
       bearing: -20,
@@ -23,7 +23,19 @@ const MapView = () => {
     map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
     // Add Fullscreen Control
-    map.current.addControl(new mapboxgl.FullscreenControl(), 'top-left'); // Or any other corner
+    map.current.addControl(new mapboxgl.FullscreenControl(), 'top-left');
+
+    // Add Geolocate Control (Locate User)
+    map.current.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+      }),
+      'top-left' // You can adjust the position
+    );
 
     map.current.on('style.load', () => {
       console.log("3D Map loaded!");
