@@ -1,15 +1,21 @@
-import React from 'react';
-import MapView from './components/MapView';
-import Navbar from './components/Navbar'; // Import the Navbar component
+
 import './App.css';
 
-const App = () => {
+// App.js (or similar)
+import React from 'react';
+import Navbar from './components/Navbar';
+import MapView from './components/MapView';
+import { MapProvider } from './components/MapContext';
+
+function App() {
   return (
-    <div className="app-container">
-      <Navbar /> {/* Add the Navbar component here */}
-      <MapView />
-    </div>
+    <MapProvider>
+      <div>
+        <Navbar />
+        <MapView />
+      </div>
+    </MapProvider>
   );
-};
+}
 
 export default App;
