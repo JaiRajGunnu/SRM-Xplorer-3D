@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 
+import 'mapbox-gl/dist/mapbox-gl.css'; // Import Mapbox CSS
+
 const MapView = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -17,6 +19,9 @@ const MapView = () => {
       bearing: -20,
       antialias: true
     });
+
+    // Add Navigation Control (Zoom buttons)
+    map.current.addControl(new mapboxgl.NavigationControl(), 'top-right'); // Position the control
 
     map.current.on('style.load', () => {
       console.log("3D Map loaded!");
