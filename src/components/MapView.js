@@ -1,19 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+// MapView.js
+import React, { useEffect, useRef, useContext } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import '../GlassmorphismPopup.css'; // Import your CSS file for the popup
+import '../GlassmorphismPopup.css';
+import { MapContext } from './MapContext';
 
 const MapView = () => {
-  const mapContainer = useRef(null);
-  const map = useRef(null);
+  const { setMapInstance, mapContainer, map, flyTo } = useContext(MapContext);
 
   useEffect(() => {
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: process.env.REACT_APP_MAPBOX_STYLE_URL, // Use the style URL from .env file
-      center: [80.0457, 12.8231], // SRM University coordinates (Default)
+      style: process.env.REACT_APP_MAPBOX_STYLE_URL,
+      center: [80.0457, 12.8231],
       zoom: 17,
       pitch: 60,
       bearing: -20,
@@ -21,18 +22,24 @@ const MapView = () => {
       attributionControl: false // Disable default attribution control
     });
 
+    // Set map instance in context
+    setMapInstance(map.current);
+
+    // Initial flyTo
+    flyTo(80.0457, 12.8231, 17);
+
     // Custom Attribution Control
     map.current.addControl(new mapboxgl.AttributionControl({
-      customAttribution: 'Map design by me'
+      customAttribution: 'Map design by Jai Raj Gunnu | © 2025'
     }));
 
-    // Navigation Control (Zoom buttons)
-    map.current.addControl(new mapboxgl.NavigationControl({}), 'bottom-right'); // Zoom buttons
+    // Navigation Control
+    map.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
     // Fullscreen Control
     map.current.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
 
-    // Geolocate Control (Locate User)
+    // Geolocate Control
     map.current.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -47,15 +54,15 @@ const MapView = () => {
     // Scale Control
     const scale = new mapboxgl.ScaleControl({
       maxWidth: 80,
-      unit: 'metric' // Or 'imperial'
+      unit: 'metric'
     });
     map.current.addControl(scale);
 
-    // Add a Marker (example)
+    // Marker (example)
     const marker = new mapboxgl.Marker({
       color: "#ea4335",
       draggable: true
-    }).setLngLat([80.0457, 12.8231]) // Same as center, just as an example.
+    }).setLngLat([80.0457, 12.8231])
       .addTo(map.current);
 
     marker.on('dragend', () => {
@@ -66,7 +73,7 @@ const MapView = () => {
     map.current.on('style.load', () => {
       console.log("3D Map loaded!");
 
-      // Add 3D buildings with the desired look
+      // 3D buildings
       map.current.addLayer({
         id: "3d-buildings",
         source: "composite",
@@ -74,20 +81,20 @@ const MapView = () => {
         type: "fill-extrusion",
         minzoom: 15,
         paint: {
-          "fill-extrusion-color": "#5c737a", // Adjust to match the reference
+          "fill-extrusion-color": "#5c737a",
           "fill-extrusion-height": ["get", "height"],
           "fill-extrusion-base": ["get", "min_height"],
           "fill-extrusion-opacity": 0.8
         }
       });
 
-      // Force resize after style load (and slight delay)
+      // Force resize after style load
       setTimeout(() => {
         map.current.resize();
       }, 100);
     });
 
-    // Example Popup (added on map click)
+    // Popup on map click
     map.current.on('click', (e) => {
       const markerHeight = 50;
       const markerRadius = 10;
@@ -103,7 +110,7 @@ const MapView = () => {
         'right': [-markerRadius, (markerHeight - markerRadius) * -1]
       };
 
-      new mapboxgl.Popup({ offset: popupOffsets, className: 'glassmorphism-popup' }) //Use glassmorphism-popup class
+      new mapboxgl.Popup({ offset: popupOffsets, className: 'glassmorphism-popup' })
         .setLngLat(e.lngLat)
         .setHTML("<h4>© 2025 - Jai Raj Gunnu</h4>")
         .setMaxWidth("300px")
@@ -112,29 +119,6 @@ const MapView = () => {
 
     return () => map.current.remove();
   }, []);
-
-  // Custom Control (HelloWorldControl - example)
-  class HelloWorldControl {
-    onAdd(map) {
-      this._map = map;
-      this._container = document.createElement('div');
-      this._container.className = 'mapboxgl-ctrl';
-      this._container.textContent = '© 2025 - Jai Raj Gunnu';
-      return this._container;
-    }
-
-    onRemove() {
-      this._container.parentNode.removeChild(this._container);
-      this._map = undefined;
-    }
-  }
-
-  useEffect(() => {
-    if(map.current){
-      map.current.addControl(new HelloWorldControl(), 'bottom-right');
-    }
-  }, [map.current])
-
 
   return (
     <div

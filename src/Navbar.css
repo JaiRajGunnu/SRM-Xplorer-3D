@@ -10,6 +10,13 @@
   z-index: 1; /* Ensure it's below map controls */
 }
 
+/* Navbar.css (add these styles) */
+.navbar-logo {
+  height: 30px; /* Adjust the height as needed */
+  margin-right: 10px; /* Space between logo and text */
+  vertical-align: middle; /* Align logo with the text */
+}
+
 .navbar-brand {
   font-size: 1.5em;
   font-weight: bold;
@@ -49,4 +56,31 @@
 
 .search-button svg {
   vertical-align: middle;
+}
+
+
+/* Navbar.css (add these styles) */
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+.suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.suggestions li:hover {
+  background-color: #444;
 }
