@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  z-index: 1; /* Ensure it's below map controls */
+  z-index: 10000000;
 }
 
 /* Navbar.css (add these styles) */
