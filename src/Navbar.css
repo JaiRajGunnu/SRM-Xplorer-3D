@@ -86,7 +86,7 @@
   top: 100%; /* Position directly below the search bar */
   left: 0;
   right: 0; /* Occupy full width of navbar-search */
-  background-color: #333;
+  background-color: #444;
   border: none;
   border-radius: 0 0 15px 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -103,5 +103,5 @@
 }
 
 .suggestions li:hover {
-  background-color: #444;
+  background-color: #333;
 }
