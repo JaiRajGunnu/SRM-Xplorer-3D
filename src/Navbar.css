@@ -23,27 +23,29 @@
 }
 
 .navbar-search {
+  position: relative; /* Add this */
   display: flex;
   align-items: center;
-  border: 1px solid #555;
-  border-radius: 5px;
-  overflow: hidden;
+  border: none; /* Add rounded left corners */
   background-color: #444;
+  border-radius: 15px;
 }
 
 .search-input {
   padding: 8px 12px;
-  border: none;
   background: none;
   color: white;
-  width: 200px;
+  width: 450px;
   font-size: 1em;
   outline: none;
+  border-radius: 15px 0 0 15px;
+  border: none;
 }
 
 .search-button {
   background-color: #666;
   color: white;
+  border-radius: 0 15px 15px 0;
   border: none;
   padding: 8px 12px;
   cursor: pointer;
@@ -59,20 +61,39 @@
 }
 
 
-/* Navbar.css (add these styles) */
+/* Active State Styling - IMPORTANT */
+.navbar-search.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.navbar-search.active .search-input {
+  border-bottom-left-radius: 0;
+}
+
+.navbar-search.active .search-button {
+  border-bottom-right-radius: 0;
+}
+
+.navbar-search.active .suggestions {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
 .suggestions {
   position: absolute;
-  top: 100%;
+  top: 100%; /* Position directly below the search bar */
   left: 0;
-  width: 100%;
+  right: 0; /* Occupy full width of navbar-search */
   background-color: #333;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none;
+  border-radius: 0 0 15px 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 0;
   margin: 0;
-  z-index: 10; /* Ensure it's above other elements */
+  z-index: 10;
 }
 
 .suggestions li {

@@ -1,5 +1,5 @@
 // Navbar.js
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import '../Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,9 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const { flyTo } = useContext(MapContext); // Access flyTo from context
+  const [isActive, setIsActive] = useState(false);
+  const searchRef = useRef(null);
+  const inputRef = useRef(null); // Ref to the input element
 
   // Pre-defined places with their coordinates
   const places = [
@@ -69,6 +72,7 @@ const Navbar = () => {
     setSearchTerm(place.name);
     setSuggestions([]); // Clear suggestions
     flyTo(place.longitude, place.latitude); // Fly to the selected place
+    setIsActive(false); // remove active style
   };
 
   const handleSearch = () => {
@@ -76,10 +80,37 @@ const Navbar = () => {
     if (selectedPlace) {
       flyTo(selectedPlace.longitude, selectedPlace.latitude);
       setSuggestions([]);
+      setIsActive(false); // remove active style
     } else {
       alert('Place not found.');
     }
   };
+
+  const handleFocus = () => {
+    setIsActive(true);
+    handleSearchChange({ target: { value: "" } }); // Trigger with empty string
+    console.log("handleFocus: isActive =", isActive); // Add this line
+  };
+
+  const handleBlur = (e) => {
+    // Delay blur to allow suggestion click to register
+    setTimeout(() => {
+      if (!searchRef.current.contains(document.activeElement)) {
+        setIsActive(false);
+        setSuggestions([]); // Close the suggestions
+        console.log("handleBlur: isActive =", isActive); // Add this line
+      }
+    }, 100); // Adjust delay as needed
+  };
+
+  useEffect(() => {
+    if (isActive) {
+      searchRef.current.classList.add('active');
+    } else {
+      searchRef.current.classList.remove('active');
+    }
+  }, [isActive]);
+
 
   return (
     <nav className="navbar">
@@ -91,7 +122,10 @@ const Navbar = () => {
         />
         SRM University 3D Map
       </div>
-      <div className="navbar-search">
+      <div
+        className={`navbar-search`}
+        ref={searchRef}
+      >
         <input
           type="text"
           placeholder="Search..."
@@ -103,11 +137,14 @@ const Navbar = () => {
               handleSearch();
             }
           }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          ref={inputRef}
         />
         <button className="search-button" onClick={handleSearch}>
           <FontAwesomeIcon icon={faSearch} />
         </button>
-        {suggestions.length > 0 && (
+        {isActive && suggestions.length > 0 && (
           <ul className="suggestions">
             {suggestions.map((place) => (
               <li key={place.name} onClick={() => handleSuggestionClick(place)}>
