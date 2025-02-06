@@ -3,7 +3,6 @@
 /* Import Poppins from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-
 .navbar {
   background-color: #282932;
   color: white;
@@ -16,9 +15,9 @@
 }
 
 .navbar-logo {
-  height: 30px; 
-  margin: 0 12px 7px 0; 
-  vertical-align: middle; 
+  height: 30px;
+  margin: 0 12px 7px 0;
+  vertical-align: middle;
 }
 
 .navbar-head {
@@ -68,7 +67,6 @@
   vertical-align: middle;
 }
 
-
 /* Active State Styling - IMPORTANT */
 .navbar-search.active.has-suggestions {
   border-bottom-left-radius: 0;
@@ -76,13 +74,12 @@
 }
 
 .navbar-search.active.has-suggestions .search-input {
-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .navbar-search.active.has-suggestions .search-button {
-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
-
 
 .suggestions {
   position: absolute;
@@ -122,4 +119,83 @@ border-bottom-right-radius: 0;
   margin-bottom: 2px;
   margin-right: -3px;
   padding-left: 13px;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.062); 
+  z-index: 1000; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px); 
+  -webkit-backdrop-filter: blur(3px); 
+
+}
+
+.invalid-search-popup {
+  background-color: #232428;
+  padding: 25px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  text-align: center;
+}
+
+.invalid-search-popup p {
+  margin: 5px;
+  font-size: 20px;
+  font-family: poppins;
+  color: #ffffff;
+}
+
+.invalid-search-popup button {
+  padding: 10px 15px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  font-weight: 600;
+  margin: 0;
+  margin-top:15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.invalid-search-popup button:hover {
+  background-color: #b71c1c;
+}
+
+
+.scale-down-center {
+	-webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+@-webkit-keyframes scale-down-center {
+  0% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes scale-down-center {
+  0% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }

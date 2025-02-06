@@ -12,6 +12,9 @@ const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   const searchRef = useRef(null);
   const inputRef = useRef(null); // Ref to the input element
+  const [showInvalidSearchPopup, setShowInvalidSearchPopup] = useState(false);
+  const [popupVisible, setPopupVisible] = useState(false); // Added state for popup visibility
+  const [animationClass, setAnimationClass] = useState(''); // Added state for animation class
 
   // Pre-defined places with their coordinates
   const places = [
@@ -73,6 +76,9 @@ const Navbar = () => {
     setSuggestions([]); // Clear suggestions
     flyTo(place.longitude, place.latitude); // Fly to the selected place
     setIsActive(false); // remove active style
+    setShowInvalidSearchPopup(false); // Hide the popup if it was visible
+    setPopupVisible(false); // Hide the popup if it was visible
+    setAnimationClass(''); // remove animation
   };
 
   const handleSearch = () => {
@@ -81,14 +87,28 @@ const Navbar = () => {
       flyTo(selectedPlace.longitude, selectedPlace.latitude);
       setSuggestions([]);
       setIsActive(false); // remove active style
+      setShowInvalidSearchPopup(false); // Hide the popup if it was visible
+      setPopupVisible(false); // Hide the popup if it was visible
+      setAnimationClass(''); // remove animation
     } else {
-      alert('Place not found.');
+      setShowInvalidSearchPopup(true); // Display the popup for invalid search
+      // Delay setting popupVisible to create a "pop out" effect
+      setTimeout(() => {
+        setPopupVisible(true);
+        setAnimationClass('scale-down-center'); // Add animation class
+      }, 500); // 1000 milliseconds = 1 second
     }
+  };
+
+  const closeInvalidSearchPopup = () => {
+    setAnimationClass(''); // Remove animation class
+    setPopupVisible(false);
+    setShowInvalidSearchPopup(false);
   };
 
   const handleFocus = () => {
     setIsActive(true);
-    handleSearchChange({ target: { value: "" } }); // Trigger with empty string
+    handleSearchChange({ target: { value: '' } }); // Trigger with empty string to show all suggestions
   };
 
   const handleBlur = (e) => {
@@ -102,13 +122,13 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    // Update the active class based on the isActive state
     if (isActive) {
       searchRef.current.classList.add('active');
     } else {
       searchRef.current.classList.remove('active');
     }
   }, [isActive]);
-
 
   return (
     <nav className="navbar">
@@ -118,13 +138,16 @@ const Navbar = () => {
           alt="SRM Logo"
           className="navbar-logo"
         />
-        <span className='navbar-head'>SRM Xplorer 3D</span>
+        <span className="navbar-head">SRM Xplorer 3D</span>
       </div>
       <div
-  className={`navbar-search ${isActive ? 'active' : ''} ${isActive && suggestions.length > 0 ? 'has-suggestions' : ''}`}
-  ref={searchRef}
->
-        <FontAwesomeIcon icon={faMapMarkerAlt} className="search-marker-icon" />  {/* Add the map marker icon here */}
+        className={`navbar-search ${isActive ? 'active' : ''} ${
+          isActive && suggestions.length > 0 ? 'has-suggestions' : ''
+        }`}
+        ref={searchRef}
+      >
+        <FontAwesomeIcon icon={faMapMarkerAlt} className="search-marker-icon" />{' '}
+        {/* Add the map marker icon here */}
         <input
           type="text"
           placeholder="Search..."
@@ -153,6 +176,14 @@ const Navbar = () => {
           </ul>
         )}
       </div>
+      {showInvalidSearchPopup && (
+        <div className="popup-overlay" style={{ display: popupVisible ? 'flex' : 'none' }}>
+          <div className={`invalid-search-popup ${animationClass}`}>
+            <p>Invalid search input. </p> <p>Please select a campus from the given list.</p>
+            <button onClick={closeInvalidSearchPopup}>Okay</button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
