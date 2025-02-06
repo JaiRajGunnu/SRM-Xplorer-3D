@@ -70,22 +70,17 @@
 
 
 /* Active State Styling - IMPORTANT */
-.navbar-search.active {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.navbar-search.active .search-input {
+.navbar-search.active.has-suggestions {
   border-bottom-left-radius: 0;
-}
-
-.navbar-search.active .search-button {
   border-bottom-right-radius: 0;
 }
 
-.navbar-search.active .suggestions {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.navbar-search.active.has-suggestions .search-input {
+border-bottom-left-radius: 0;
+}
+
+.navbar-search.active.has-suggestions .search-button {
+border-bottom-right-radius: 0;
 }
 
 

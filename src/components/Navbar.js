@@ -121,9 +121,9 @@ const Navbar = () => {
         <span className='navbar-head'>SRM Xplorer 3D</span>
       </div>
       <div
-        className={`navbar-search`}
-        ref={searchRef}
-      >
+  className={`navbar-search ${isActive ? 'active' : ''} ${isActive && suggestions.length > 0 ? 'has-suggestions' : ''}`}
+  ref={searchRef}
+>
         <FontAwesomeIcon icon={faMapMarkerAlt} className="search-marker-icon" />  {/* Add the map marker icon here */}
         <input
           type="text"
