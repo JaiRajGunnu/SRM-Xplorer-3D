@@ -22,38 +22,38 @@ const Navbar = () => {
     },
     {
       name: 'SRM IST Vadapalani Campus (Chennai)',
-      latitude: 12.9853,
-      longitude: 79.9711,
+      latitude: 13.051908,
+      longitude: 80.2091679,
     },
     {
       name: 'SRM IST Ramapuram Campus (Chennai)',
-      latitude: 13.0314,
-      longitude: 80.1789,
+      latitude: 13.0324312,
+      longitude: 80.1755446,
     },
     {
       name: 'SRM University, Sonepat (Haryana)',
-      latitude: 28.9931,
-      longitude: 77.0151,
+      latitude: 28.9197232,
+      longitude: 77.1252074,
     },
     {
       name: 'SRM University, Sikkim (Gangtok)',
-      latitude: 27.3389,
-      longitude: 88.6065,
+      latitude: 27.3162474,
+      longitude: 88.5931057,
     },
     {
       name: 'SRM University, Andhra Pradesh (Amaravati)',
-      latitude: 16.5062,
-      longitude: 80.6480,
+      latitude: 16.4649199,
+      longitude: 80.5057487,
     },
     {
       name: 'SRM IST Ghaziabad Campus (Delhi NCR)',
-      latitude: 28.6692,
-      longitude: 77.4537,
+      latitude: 28.799357,
+      longitude: 77.5360791,
     },
     {
       name: 'SRM IST Tiruchirappalli Campus (Tamil Nadu)',
-      latitude: 10.8056,
-      longitude: 78.6858,
+      latitude: 10.9562844,
+      longitude: 78.7514618,
     },
   ];
 
