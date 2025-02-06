@@ -21,39 +21,39 @@ const Navbar = () => {
       longitude: 80.0439,
     },
     {
-      name: 'SRM IST Vadapalani Campus (Chennai)',
-      latitude: 13.051908,
-      longitude: 80.2091679,
+      name: 'SRM University, Andhra Pradesh (Amaravati)',
+      latitude: 16.46333,
+      longitude: 80.50786,
     },
     {
       name: 'SRM IST Ramapuram Campus (Chennai)',
-      latitude: 13.0324312,
-      longitude: 80.1755446,
-    },
-    {
-      name: 'SRM University, Sonepat (Haryana)',
-      latitude: 28.9197232,
-      longitude: 77.1252074,
-    },
-    {
-      name: 'SRM University, Sikkim (Gangtok)',
-      latitude: 27.3162474,
-      longitude: 88.5931057,
-    },
-    {
-      name: 'SRM University, Andhra Pradesh (Amaravati)',
-      latitude: 16.4649199,
-      longitude: 80.5057487,
+      latitude: 13.0329159,
+      longitude: 80.1789767,
     },
     {
       name: 'SRM IST Ghaziabad Campus (Delhi NCR)',
-      latitude: 28.799357,
-      longitude: 77.5360791,
+      latitude: 28.79733,
+      longitude: 77.53992,
+    },
+    {
+      name: 'SRM University, Sonepat (Haryana)',
+      latitude: 28.91827,
+      longitude: 77.129926,
+    },
+    {
+      name: 'SRM University, Sikkim (Gangtok)',
+      latitude: 27.315885,
+      longitude: 88.59581,
+    },
+    {
+      name: 'SRM IST Vadapalani Campus (Chennai)',
+      latitude: 13.051505,
+      longitude: 80.211259,
     },
     {
       name: 'SRM IST Tiruchirappalli Campus (Tamil Nadu)',
-      latitude: 10.9562844,
-      longitude: 78.7514618,
+      latitude: 10.952615,
+      longitude: 78.752883,
     },
   ];
 
@@ -89,7 +89,6 @@ const Navbar = () => {
   const handleFocus = () => {
     setIsActive(true);
     handleSearchChange({ target: { value: "" } }); // Trigger with empty string
-    console.log("handleFocus: isActive =", isActive); // Add this line
   };
 
   const handleBlur = (e) => {
@@ -98,7 +97,6 @@ const Navbar = () => {
       if (!searchRef.current.contains(document.activeElement)) {
         setIsActive(false);
         setSuggestions([]); // Close the suggestions
-        console.log("handleBlur: isActive =", isActive); // Add this line
       }
     }, 100); // Adjust delay as needed
   };
