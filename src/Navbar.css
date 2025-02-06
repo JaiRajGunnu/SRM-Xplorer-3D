@@ -131,6 +131,7 @@
   background-color: rgba(0, 0, 0, 0.062); 
   z-index: 1000; 
   display: flex;
+  padding:25px;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(3px); 
