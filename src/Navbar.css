@@ -2,7 +2,7 @@
 
 /* Navbar.css */
 .navbar {
-  background-color: #333;
+  background-color: #282932;
   color: white;
   padding: 15px 40px;
   display: flex;
@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
   border: none; /* Add rounded left corners */
-  background-color: #444;
+  background-color: #32333d;
   border-radius: 15px;
 }
 
@@ -45,11 +45,11 @@
 }
 
 .search-button {
-  background-color: #666;
+  background-color: #232428;
   color: white;
   border-radius: 0 15px 15px 0;
   border: none;
-  padding: 8px 10px;
+  padding: 8px 12px 10px 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   line-height: 1.5;
@@ -89,7 +89,7 @@
   top: 100%; /* Position directly below the search bar */
   left: 0;
   right: 0; /* Occupy full width of navbar-search */
-  background-color: #444;
+  background-color: #32333d;
   border: none;
   border-radius: 0 0 15px 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -106,13 +106,14 @@
 }
 
 .suggestions li:hover {
-  background-color: #333;
+  background-color: #232428;
 }
 
 /* Style for the map marker icon */
 .search-marker-icon {
   margin-right: -5px;
   padding-left: 10px;
-  color: #aaa;
+  margin-bottom: 2px;
+  color: #757575;
   font-size: 1em;
 }
