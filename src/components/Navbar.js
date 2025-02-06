@@ -118,7 +118,7 @@ const Navbar = () => {
           alt="SRM Logo"
           className="navbar-logo"
         />
-        SRM Xplorer 3D
+        <span className='navbar-head'>SRM Xplorer 3D</span>
       </div>
       <div
         className={`navbar-search`}

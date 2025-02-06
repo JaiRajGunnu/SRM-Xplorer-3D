@@ -1,10 +1,13 @@
-
-
 /* Navbar.css */
+
+/* Import Poppins from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
 .navbar {
   background-color: #282932;
   color: white;
-  padding: 15px 40px;
+  padding: 15px 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,16 +15,16 @@
   z-index: 10000000;
 }
 
-/* Navbar.css (add these styles) */
 .navbar-logo {
-  height: 30px; /* Adjust the height as needed */
-  margin-right: 10px; /* Space between logo and text */
-  vertical-align: middle; /* Align logo with the text */
+  height: 30px; 
+  margin: 0 12px 7px 0; 
+  vertical-align: middle; 
 }
 
-.navbar-brand {
+.navbar-head {
   font-size: 1.5em;
   font-weight: bold;
+  font-family: 'Poppins', sans-serif;
 }
 
 .navbar-search {
@@ -42,6 +45,7 @@
   outline: none;
   border-radius: 15px 0 0 15px;
   border: none;
+  font-family: 'Poppins', sans-serif; /* Apply Poppins to the input */
 }
 
 .search-button {
@@ -49,14 +53,15 @@
   color: white;
   border-radius: 0 15px 15px 0;
   border: none;
-  padding: 8px 20px 10px 13px;
+  padding: 10px 20px 10px 13px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   line-height: 1.5;
+  font-family: 'Poppins', sans-serif; /* Apply Poppins to the button text (if any)*/
 }
 
 .search-button:hover {
-  background-color: #888;
+  background-color: #1c1b1b;
 }
 
 .search-button svg {
@@ -97,6 +102,7 @@
   padding: 0;
   margin: 0;
   z-index: 10;
+  font-family: 'Poppins', sans-serif; /* Apply Poppins to the suggestions */
 }
 
 .suggestions li {
