@@ -2,7 +2,7 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import '../Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'; // Import map marker icon
 import { MapContext } from './MapContext';
 
 const Navbar = () => {
@@ -118,12 +118,13 @@ const Navbar = () => {
           alt="SRM Logo"
           className="navbar-logo"
         />
-        SRM University 3D Map
+        SRM Xplorer 3D
       </div>
       <div
         className={`navbar-search`}
         ref={searchRef}
       >
+        <FontAwesomeIcon icon={faMapMarkerAlt} className="search-marker-icon" />  {/* Add the map marker icon here */}
         <input
           type="text"
           placeholder="Search..."

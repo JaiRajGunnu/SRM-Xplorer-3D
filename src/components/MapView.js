@@ -76,23 +76,11 @@ const MapView = () => {
             customAttribution: 'Map design by Jai Raj Gunnu | © 2025'
         }));
 
-        // Navigation Control
-        map.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+        // Navigation Control (Zoom buttons) - Move to top-right
+        map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-        // Fullscreen Control
-        map.current.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-
-        // Geolocate Control
-        map.current.addControl(
-            new mapboxgl.GeolocateControl({
-                positionOptions: {
-                    enableHighAccuracy: true
-                },
-                trackUserLocation: true,
-                showUserHeading: true
-            }),
-            'bottom-left'
-        );
+        // Fullscreen Control - Bottom right
+        map.current.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
 
         // Scale Control
         const scale = new mapboxgl.ScaleControl({
@@ -171,7 +159,7 @@ const MapView = () => {
             ref={mapContainer}
             style={{
                 width: '100dvw',
-                height: '93dvh',
+                height: '92dvh',
                 margin: 0,
                 padding: 0,
                 overflow: 'hidden'
