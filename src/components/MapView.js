@@ -179,7 +179,7 @@ const MapView = () => {
                 <div 
                 style={{
                   position: 'absolute',
-                  top: '10px',
+                  top: '05px',
                   left: '05px',
                   background: 'rgba(255, 255, 255)',
                   color: '#464154',
