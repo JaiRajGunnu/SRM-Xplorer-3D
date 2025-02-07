@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext, useState } from 'react';
+import React, { useEffect, useRef, useContext, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../GlassmorphismPopup.css';
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faPhone, faTimes, faGlobe } from '@fortawesome/free-solid-svg-icons'; // Import icons: Added faTimes
 
 const MapView = () => {
-    const { setMapInstance, mapContainer, map, flyTo } = useContext(MapContext);
+    const { setMapInstance, mapContainer, map, flyTo, setSelectedUniversityName, selectedUniversityName } = useContext(MapContext);
 
     // State for Modal Popup
     const [showModal, setShowModal] = useState(false);
@@ -17,7 +17,28 @@ const MapView = () => {
     const [imageLoadError, setImageLoadError] = useState(false);
 
     //  Pre-defined places with their coordinates from JSON
-    const places = placesData;
+    const placesRef = useRef(placesData); // Store places data in a ref
+
+
+    const findNearestUniversity = useCallback((mapCenter) => {
+        let nearest = null;
+        let minDistance = Infinity;
+
+        placesRef.current.forEach(place => {
+            const distance = Math.sqrt(
+                Math.pow(place.longitude - mapCenter.lng, 2) +
+                Math.pow(place.latitude - mapCenter.lat, 2)
+            );
+
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearest = place;
+            }
+        });
+
+        return nearest ? nearest.name : null;
+    }, []);
+
 
     useEffect(() => {
         mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -59,7 +80,7 @@ const MapView = () => {
 
 
         // Add markers for each place
-        places.forEach(place => {
+        placesRef.current.forEach(place => {
             const marker = new mapboxgl.Marker({
                 color: "#ea4335", // You can change the color
             })
@@ -71,6 +92,7 @@ const MapView = () => {
                 setModalContent(place); // Pass the entire place object
                 setImageLoadError(false); // Reset error state when modal opens
                 setShowModal(true);
+                setSelectedUniversityName(place.name); // Update the university name
             });
         });
 
@@ -122,8 +144,23 @@ const MapView = () => {
                 .addTo(map.current);
         });
 
-        return () => map.current.remove();
-    }, []);
+
+        // Update university name when the map moves
+        map.current.on('moveend', () => {
+            const center = map.current.getCenter();
+            const nearestUniversityName = findNearestUniversity(center);
+            setSelectedUniversityName(nearestUniversityName);
+        });
+
+
+        return () => {
+            if (map.current) {
+                map.current.off('moveend', () => {}); // Remove the event listener on unmount
+                map.current.remove();
+            }
+        };
+    }, [findNearestUniversity, setSelectedUniversityName]);  // Dependencies for useEffect
+
 
     return (
         <>
@@ -136,7 +173,28 @@ const MapView = () => {
                     padding: 0,
                     overflow: 'hidden'
                 }}
-            />
+            >
+            {/* University Name Display */}
+              {selectedUniversityName && (
+                <div 
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  left: '05px',
+                  background: 'rgba(255, 255, 255)',
+                  color: '#464154',
+                  padding: '5px 10px',
+                  borderRadius: '5px',
+                  zIndex: 1,
+                  maxWidth: '80%',
+                  margin: '10px',
+                  fontWeight: 'bold',
+                  fontSize: '12px'
+                }}>
+                  {selectedUniversityName}
+                </div>
+              )}
+            </div>
 
             {/* Modal Popup */}
             {showModal && (
@@ -184,7 +242,7 @@ const MapView = () => {
                                         <FontAwesomeIcon icon={faGlobe} />
                                     </span>
                                     <span> {modalContent.link ? (
-                                      <a href={modalContent.link} target='_blank' rel="noopener noreferrer">{modalContent.link}</a>
+                                      <a href={modalContent.link} target='_blank' rel="noopener noreferrer">srmist.edu.in</a>
                                     ) : (
                                       'No website available' // Or any other appropriate message
                                     )}

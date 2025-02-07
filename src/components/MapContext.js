@@ -7,6 +7,7 @@ export const MapProvider = ({ children }) => {
   const [mapInstance, setMapInstance] = useState(null);
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const [selectedUniversityName, setSelectedUniversityName] = useState(null); // New state
 
   const flyTo = (lng, lat, zoom) => {
     if (map.current) {
@@ -23,7 +24,9 @@ export const MapProvider = ({ children }) => {
     setMapInstance,
     mapContainer,
     map,
-    flyTo
+    flyTo,
+    selectedUniversityName, // Include the name
+    setSelectedUniversityName // Include the setter
   };
 
   return (

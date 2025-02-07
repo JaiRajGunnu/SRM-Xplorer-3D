@@ -11,8 +11,8 @@
   padding: 25px;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .modal-popup {
@@ -60,7 +60,6 @@
 
 .modal-popup .info-line span a {
   color: #ffffff;
-  opacity: 0.70;
   text-decoration: none;
 }
 
