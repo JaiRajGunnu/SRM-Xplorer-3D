@@ -100,41 +100,43 @@ const Navbar = () => {
         />
         <span className="navbar-head">SRM Xplorer 3D</span>
       </div>
-      <div
-        className={`navbar-search ${isActive ? 'active' : ''} ${
-          isActive && suggestions.length > 0 ? 'has-suggestions' : ''
-        }`}
-        ref={searchRef}
-      >
-        <FontAwesomeIcon icon={faMapMarkerAlt} className="search-marker-icon" />{' '}
-        {/* Add the map marker icon here */}
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="search-input"
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleSearch();
-            }
-          }}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          ref={inputRef}
-        />
-        <button className="search-button" onClick={handleSearch}>
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
-        {isActive && suggestions.length > 0 && (
-          <ul className="suggestions">
-            {suggestions.map((place) => (
-              <li key={place.name} onClick={() => handleSuggestionClick(place)}>
-                {place.name}
-              </li>
-            ))}
-          </ul>
-        )}
+      <div className="navbar-search-container">
+        <div
+          className={`navbar-search ${isActive ? 'active' : ''} ${
+            isActive && suggestions.length > 0 ? 'has-suggestions' : ''
+          }`}
+          ref={searchRef}
+        >
+          <FontAwesomeIcon icon={faMapMarkerAlt} className="search-marker-icon" />{' '}
+          {/* Add the map marker icon here */}
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="search-input"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearch();
+              }
+            }}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            ref={inputRef}
+          />
+          <button className="search-button" onClick={handleSearch}>
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+          {isActive && suggestions.length > 0 && (
+            <ul className="suggestions">
+              {suggestions.map((place) => (
+                <li key={place.name} onClick={() => handleSuggestionClick(place)}>
+                  {place.name}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
       {showInvalidSearchPopup && (
         <div className="popup-overlay" style={{ display: popupVisible ? 'flex' : 'none' }}>
