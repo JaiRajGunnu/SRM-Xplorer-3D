@@ -6,7 +6,7 @@ import './ModalPopup.css';
 import { MapContext } from './MapContext';
 import placesData from '../data/campuses.json'; // Import the JSON data
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faPhone, faTimes, faGlobe } from '@fortawesome/free-solid-svg-icons'; // Import icons: Added faTimes
+import { faMapMarkerAlt, faPhone, faTimes, faGlobe, faInfoCircle } from '@fortawesome/free-solid-svg-icons'; // Import icons: Added faTimes + faInfoCircle
 
 const MapView = () => {
     const { setMapInstance, mapContainer, map, flyTo, setSelectedUniversityName, selectedUniversityName } = useContext(MapContext);
@@ -38,6 +38,17 @@ const MapView = () => {
 
         return nearest ? nearest.name : null;
     }, []);
+
+    const handleInfoIconClick = () => {
+        // Find the selected university data
+        const selectedUniversity = placesRef.current.find(place => place.name === selectedUniversityName);
+
+        if (selectedUniversity) {
+            setModalContent(selectedUniversity); // Use existing modalContent
+            setImageLoadError(false); // Reset image error state
+            setShowModal(true);          // Use existing showModal
+        }
+    };
 
 
     useEffect(() => {
@@ -88,7 +99,8 @@ const MapView = () => {
                 .addTo(map.current);
 
             //Marker click event
-            marker.getElement().addEventListener('click', () => {
+            const markerElement = marker.getElement();
+            markerElement.addEventListener('click', () => {
                 setModalContent(place); // Pass the entire place object
                 setImageLoadError(false); // Reset error state when modal opens
                 setShowModal(true);
@@ -152,10 +164,10 @@ const MapView = () => {
             setSelectedUniversityName(nearestUniversityName);
         });
 
-
+        // Cleanup function
         return () => {
             if (map.current) {
-                map.current.off('moveend', () => {}); // Remove the event listener on unmount
+                map.current.off('moveend', () => {});
                 map.current.remove();
             }
         };
@@ -176,7 +188,7 @@ const MapView = () => {
             >
             {/* University Name Display */}
               {selectedUniversityName && (
-                <div 
+                <div
                 style={{
                   position: 'absolute',
                   top: '05px',
@@ -189,9 +201,17 @@ const MapView = () => {
                   maxWidth: '80%',
                   margin: '10px',
                   fontWeight: 'bold',
-                  fontSize: '12px'
+                  fontSize: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'  // Add space between name and icon
                 }}>
-                  {selectedUniversityName}
+                  <span>{selectedUniversityName}</span>
+                  <FontAwesomeIcon
+                      icon={faInfoCircle}
+                      style={{ cursor: 'pointer', marginLeft: '5px' }} // Adjust spacing as needed
+                      onClick={handleInfoIconClick}
+                  />
                 </div>
               )}
             </div>
