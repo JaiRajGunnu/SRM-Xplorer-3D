@@ -1,80 +1,137 @@
-
+/* In your ModalPopup.css or a similar stylesheet */
 .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.062); 
-    z-index: 1000; 
-    display: flex;
-    padding:25px;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(3px); 
-    -webkit-backdrop-filter: blur(3px); 
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.062);
+  z-index: 1000;
+  display: flex;
+  padding: 25px;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.modal-popup {
+  background-color: #232428;
+  padding: 25px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  z-index: 1001;
+  max-width: 550px;
+  position: relative; /* Add this */
+}
+
+.modal-popup p {
+  margin: 5px;
+  font-size: 20px;
+  font-family: poppins;
+  color: #ffffff;
+  text-align: left;
+}
+
+.modal-popup .info-line {
+  display: flex;
+  align-items: center;
+  font-family: poppins;
+  margin-bottom: 15px;
+  color: #ffffff;
+  margin: 20px;
+  opacity: 0.70;
+}
+
+.modal-popup .info-line .icon {
+  margin-right: 10px;
+  color: #ddd;
+  width: 1.2em;
+  text-align: center;
+  display: inline-block;
+}
+
+.modal-popup .info-line span {
+  word-break: break-word;
+  width: 75%;
+  text-align: left;
+}
+
+.modal-popup .info-line span a {
+  color: #ffffff;
+  opacity: 0.70;
+  text-decoration: none;
+}
+
+.modal-popup .close-button {
+  position: absolute;
+  top: 35px; /* Adjusted top position */
+  right: 30px; /* Adjusted right position */
+  cursor: pointer;
+  color: #333;
+  /* background: rgba(255, 255, 255, 0.545); */
+  padding:1px 7px;
+  border-radius: 50%;
+  font-size: 1.5em;
+  z-index: 2; /* Ensure it's above the image */
+}
+
+.modal-popup .close-button:hover {
+  color: #d32f2f;
+}
+
+.modal-popup button {
+  padding: 10px 15px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  font-weight: 600;
+  margin: 0;
+  margin-top: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-popup button:hover {
+  background-color: #b71c1c;
+}
+
+.scale-down-center {
+  -webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes scale-down-center {
+  0% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
   }
-  
-  .modal-popup {
-    background-color: #232428;
-    padding: 25px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-    max-width: 525px;
-    text-align: center;
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
-  
-  .modal-popup p {
-    margin: 5px;
-    font-size: 20px;
-    font-family: poppins;
-    color: #ffffff;
+}
+
+@keyframes scale-down-center {
+  0% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
   }
-  
-  .modal-popup button {
-    padding: 10px 15px;
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    font-weight: 600;
-    margin: 0;
-    margin-top:15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
-  
-  .modal-popup button:hover {
-    background-color: #b71c1c;
-  }
-  
-  
-  .scale-down-center {
-      -webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-              animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  }
-  
-  
-  
-  @-webkit-keyframes scale-down-center {
-    0% {
-      -webkit-transform: scale(2);
-              transform: scale(2);
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
-  }
-  @keyframes scale-down-center {
-    0% {
-      -webkit-transform: scale(2);
-              transform: scale(2);
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
-  }
+}
+
+/* Style for the image */
+.modal-image {
+  width: 100%; /* Make the image fill the width of the modal */
+  max-height: 200px; /* Set a maximum height to prevent overflow */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+  border-radius: 8px; /* Optional: round the corners */
+  margin-bottom: 15px; /* Add some space below the image */
+}

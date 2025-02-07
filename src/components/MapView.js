@@ -5,13 +5,16 @@ import '../GlassmorphismPopup.css';
 import './ModalPopup.css';
 import { MapContext } from './MapContext';
 import placesData from '../data/campuses.json'; // Import the JSON data
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faPhone, faTimes, faGlobe } from '@fortawesome/free-solid-svg-icons'; // Import icons: Added faTimes
 
 const MapView = () => {
     const { setMapInstance, mapContainer, map, flyTo } = useContext(MapContext);
 
     // State for Modal Popup
     const [showModal, setShowModal] = useState(false);
-    const [modalContent, setModalContent] = useState('');
+    const [modalContent, setModalContent] = useState(null);
+    const [imageLoadError, setImageLoadError] = useState(false);
 
     //  Pre-defined places with their coordinates from JSON
     const places = placesData;
@@ -65,7 +68,8 @@ const MapView = () => {
 
             //Marker click event
             marker.getElement().addEventListener('click', () => {
-                setModalContent(place.name);
+                setModalContent(place); // Pass the entire place object
+                setImageLoadError(false); // Reset error state when modal opens
                 setShowModal(true);
             });
         });
@@ -138,8 +142,56 @@ const MapView = () => {
             {showModal && (
                 <div className="popup-overlay">
                     <div className="modal-popup scale-down-center">
-                        <p>{modalContent}</p>
-                        <button onClick={() => setShowModal(false)}>Close</button>
+                        <div className="close-button" onClick={() => setShowModal(false)}>
+                            <FontAwesomeIcon icon={faTimes} />
+                        </div>
+
+                        {modalContent && (
+                            <>
+                                {/* Image Display */}
+                                {modalContent.imageUrl && !imageLoadError ? (
+                                    <img
+                                        src={modalContent.imageUrl}
+                                        alt={modalContent.name}
+                                        className="modal-image"
+                                        onError={() => {
+                                            setImageLoadError(true); // Set error state
+                                        }}
+                                    />
+                                ) : (
+                                    <img
+                                        src="https://via.placeholder.com/400x200?text=Image+Not+Available" // Placeholder image URL
+                                        alt="Image not available"
+                                        className="modal-image"
+                                    />
+                                )}
+
+                                <p><b>{modalContent.name}</b></p>
+                                <div className="info-line">
+                                    <span className="icon">
+                                        <FontAwesomeIcon icon={faMapMarkerAlt} />
+                                    </span>
+                                    <span className='address'>{modalContent.address}</span>
+                                </div>
+                                <div className="info-line">
+                                    <span className="icon">
+                                        <FontAwesomeIcon icon={faPhone} />
+                                    </span>
+                                    <span> {modalContent.contactNumber}</span>
+                                </div>
+                                <div className="info-line">
+                                    <span className="icon">
+                                        <FontAwesomeIcon icon={faGlobe} />
+                                    </span>
+                                    <span> {modalContent.link ? (
+                                      <a href={modalContent.link} target='_blank' rel="noopener noreferrer">{modalContent.link}</a>
+                                    ) : (
+                                      'No website available' // Or any other appropriate message
+                                    )}
+                                    </span>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             )}

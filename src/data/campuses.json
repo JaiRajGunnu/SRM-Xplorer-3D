@@ -1,42 +1,83 @@
 [
-    {
-      "name": "SRM Institute of Science and Technology (Main Campus - Kattankulathur, Chennai)",
-      "latitude": 12.8239,
-      "longitude": 80.0439
-    },
-    {
-      "name": "SRM University, Andhra Pradesh (Amaravati)",
-      "latitude": 16.46333,
-      "longitude": 80.50786
-    },
-    {
-      "name": "SRM IST Ramapuram Campus (Chennai)",
-      "latitude": 13.0329159,
-      "longitude": 80.1789767
-    },
-    {
-      "name": "SRM IST Ghaziabad Campus (Delhi NCR)",
-      "latitude": 28.79733,
-      "longitude": 77.53992
-    },
-    {
-      "name": "SRM University, Sonepat (Haryana)",
-      "latitude": 28.91827,
-      "longitude": 77.129926
-    },
-    {
-      "name": "SRM University, Sikkim (Gangtok)",
-      "latitude": 27.315885,
-      "longitude": 88.59581
-    },
-    {
-      "name": "SRM IST Vadapalani Campus (Chennai)",
-      "latitude": 13.051505,
-      "longitude": 80.211259
-    },
-    {
-      "name": "SRM IST Tiruchirappalli Campus (Tamil Nadu)",
-      "latitude": 10.952615,
-      "longitude": 78.752883
-    }
-  ]
+  {
+    "name": "SRM Institute of Science and Technology (Main Campus - Kattankulathur, Chennai)",
+    "latitude": 12.8239,
+    "longitude": 80.0439,
+    "address": "SRM Nagar, Kattankulathur - 603203, Chengalpattu District, Tamil Nadu, India",
+    "contactNumber": "+91-44-27452270",
+    "link": "srmist.edu.in",
+    "imageUrl": "/img/SRM_KTR.jpeg"
+  },
+  {
+    "name": "SRM University, Andhra Pradesh (Amaravati)",
+    "latitude": 16.46333,
+    "longitude": 80.50786,
+    "address": "Neerukonda, Mangalagiri Mandal, Guntur District, Andhra Pradesh - 522502, India",
+    "contactNumber": "+91-863-2233301",
+    "link": "srmap.edu.in",
+    "imageUrl": "/img/SRM_AP.jpg"
+  },
+  {
+    "name": "SRM IST Ramapuram Campus (Chennai)",
+    "latitude": 13.0329159,
+    "longitude": 80.1789767,
+    "address": "Bharathi Salai, Ramapuram, Chennai - 600089, Tamil Nadu, India",
+    "contactNumber": "+91-44-23866001",
+    "link": "srmist.edu.in",
+    "imageUrl": "/img/SRM_RMP.jpeg"
+  },
+  {
+    "name": "SRM IST Ghaziabad Campus (Delhi NCR)",
+    "latitude": 28.79733,
+    "longitude": 77.53992,
+    "address": "Delhi - Meerut Expressway, Modinagar, Ghaziabad - 201204, Uttar Pradesh, India",
+    "contactNumber": "+91-1232-233300",
+    "link": "srmist.edu.in",
+    "imageUrl": "/img/SRM_NCR.png"
+  },
+  {
+    "name": "SRM University, Sonepat (Haryana)",
+    "latitude": 28.91827,
+    "longitude": 77.129926,
+    "address": "Plot No. 39, Rajiv Gandhi Education City, Sonepat - 131029, Haryana, India",
+    "contactNumber": "+91-130-2216500",
+    "link": "srmist.edu.in",
+    "imageUrl": "/img/SRM_HRY.png"
+  },
+  {
+    "name": "SRM University, Sikkim (Gangtok)",
+    "latitude": 27.315885,
+    "longitude": 88.59581,
+    "address": "5th Mile, Tadong, Gangtok - 737102, Sikkim, India",
+    "contactNumber": "+91-3592-231073",
+    "link": "srmist.edu.in",
+    "imageUrl": "/img/SRM_SKM.png"
+  },
+  {
+    "name": "SRM IST Vadapalani Campus (Chennai)",
+    "latitude": 13.051505,
+    "longitude": 80.211259,
+    "address": "No.1, Jawaharlal Nehru Salai, Vadapalani, Chennai - 600026, Tamil Nadu, India",
+    "contactNumber": "+91-44-43969999",
+    "link": "srmist.edu.in",
+    "imageUrl": "/img/SRM_VDP.jpg"
+  },
+  {
+    "name": "SRM IST Tiruchirappalli Campus (Tamil Nadu)",
+    "latitude": 10.952615,
+    "longitude": 78.752883,
+    "address": "SRM Nagar, Trichy - Chennai Highway, Tiruchirappalli - 621105, Tamil Nadu, India",
+    "contactNumber": "+91-431-2250306",
+    "link": "srmist.edu.in",
+    "imageUrl": "/img/SRM_TRY.jpg"
+  },
+  {
+    "name": "SRM College of Agricultural Sciences (Baburayanpettai Campus - Tamil Nadu)",
+    "latitude": 12.385142,
+    "longitude": 79.736277,
+    "address": "9PPP+27G, Baburayanpettai, Minnal Chithamur, Tamil Nadu 603201",
+    "contactNumber": "+91-442-7417000",
+    "link": "srmist.edu.in",
+    "imageUrl": "/img/SRM_BAB.png"
+  }
+]

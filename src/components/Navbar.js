@@ -1,10 +1,10 @@
-// Navbar.js
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import '../Navbar.css';
 import './ModalPopup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'; // Import map marker icon
 import { MapContext } from './MapContext';
+import placesData from '../data/campuses.json'; // Import campuses data
 
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,49 +17,8 @@ const Navbar = () => {
   const [popupVisible, setPopupVisible] = useState(false); // Added state for popup visibility
   const [animationClass, setAnimationClass] = useState(''); // Added state for animation class
 
-  // Pre-defined places with their coordinates
-  const places = [
-    {
-      name: 'SRM Institute of Science and Technology (Main Campus - Kattankulathur, Chennai)',
-      latitude: 12.8239,
-      longitude: 80.0439,
-    },
-    {
-      name: 'SRM University, Andhra Pradesh (Amaravati)',
-      latitude: 16.46333,
-      longitude: 80.50786,
-    },
-    {
-      name: 'SRM IST Ramapuram Campus (Chennai)',
-      latitude: 13.0329159,
-      longitude: 80.1789767,
-    },
-    {
-      name: 'SRM IST Ghaziabad Campus (Delhi NCR)',
-      latitude: 28.79733,
-      longitude: 77.53992,
-    },
-    {
-      name: 'SRM University, Sonepat (Haryana)',
-      latitude: 28.91827,
-      longitude: 77.129926,
-    },
-    {
-      name: 'SRM University, Sikkim (Gangtok)',
-      latitude: 27.315885,
-      longitude: 88.59581,
-    },
-    {
-      name: 'SRM IST Vadapalani Campus (Chennai)',
-      latitude: 13.051505,
-      longitude: 80.211259,
-    },
-    {
-      name: 'SRM IST Tiruchirappalli Campus (Tamil Nadu)',
-      latitude: 10.952615,
-      longitude: 78.752883,
-    },
-  ];
+  //  Pre-defined places with their coordinates
+  const places = placesData;
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
