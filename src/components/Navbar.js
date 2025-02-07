@@ -1,6 +1,7 @@
 // Navbar.js
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import '../Navbar.css';
+import './ModalPopup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'; // Import map marker icon
 import { MapContext } from './MapContext';
