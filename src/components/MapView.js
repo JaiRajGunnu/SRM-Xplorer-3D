@@ -131,7 +131,7 @@ const MapView = () => {
                 ref={mapContainer}
                 style={{
                     width: '100dvw',
-                    height: '92dvh',
+                    height: '91dvh',
                     margin: 0,
                     padding: 0,
                     overflow: 'hidden'
