@@ -1,11 +1,16 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef, useContext, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../GlassmorphismPopup.css';
+import '../Navbar.css'; // Import CSS
 import { MapContext } from './MapContext';
 
 const MapView = () => {
     const { setMapInstance, mapContainer, map, flyTo } = useContext(MapContext);
+
+    // State for Modal Popup
+    const [showModal, setShowModal] = useState(false);
+    const [modalContent, setModalContent] = useState('');
 
     // Pre-defined places with their coordinates (same as in Navbar)
     const places = [
@@ -96,11 +101,13 @@ const MapView = () => {
                 color: "#ea4335", // You can change the color
             })
                 .setLngLat([place.longitude, place.latitude])
-                .setPopup(
-                    new mapboxgl.Popup({ offset: 25 }) // Add popup for each marker
-                        .setHTML(`<h4>${place.name}</h4>`)
-                )
                 .addTo(map.current);
+
+            //Marker click event
+            marker.getElement().addEventListener('click', () => {
+                setModalContent(place.name);
+                setShowModal(true);
+            });
         });
 
 
@@ -155,16 +162,28 @@ const MapView = () => {
     }, []);
 
     return (
-        <div
-            ref={mapContainer}
-            style={{
-                width: '100dvw',
-                height: '92dvh',
-                margin: 0,
-                padding: 0,
-                overflow: 'hidden'
-            }}
-        />
+        <>
+            <div
+                ref={mapContainer}
+                style={{
+                    width: '100dvw',
+                    height: '92dvh',
+                    margin: 0,
+                    padding: 0,
+                    overflow: 'hidden'
+                }}
+            />
+
+            {/* Modal Popup */}
+            {showModal && (
+                <div className="popup-overlay">
+                    <div className="modal-popup scale-down-center">
+                        <p>{modalContent}</p>
+                        <button onClick={() => setShowModal(false)}>Close</button>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 

@@ -178,7 +178,7 @@ const Navbar = () => {
       </div>
       {showInvalidSearchPopup && (
         <div className="popup-overlay" style={{ display: popupVisible ? 'flex' : 'none' }}>
-          <div className={`invalid-search-popup ${animationClass}`}>
+          <div className={`modal-popup ${animationClass}`}>
             <p>Invalid search input. </p> <p>Please select a campus from the given list.</p>
             <button onClick={closeInvalidSearchPopup}>Okay</button>
           </div>

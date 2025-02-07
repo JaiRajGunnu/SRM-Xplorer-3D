@@ -139,7 +139,7 @@
 
 }
 
-.invalid-search-popup {
+.modal-popup {
   background-color: #232428;
   padding: 25px 20px;
   border-radius: 10px;
@@ -148,14 +148,14 @@
   text-align: center;
 }
 
-.invalid-search-popup p {
+.modal-popup p {
   margin: 5px;
   font-size: 20px;
   font-family: poppins;
   color: #ffffff;
 }
 
-.invalid-search-popup button {
+.modal-popup button {
   padding: 10px 15px;
   background-color: #d32f2f;
   color: white;
@@ -168,7 +168,7 @@
   transition: background-color 0.3s ease;
 }
 
-.invalid-search-popup button:hover {
+.modal-popup button:hover {
   background-color: #b71c1c;
 }
 
