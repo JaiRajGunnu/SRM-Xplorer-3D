@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# SRM Xplorer 3D
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SRM Xplorer 3D is an interactive navigation web application for SRM University. This project utilizes **Mapbox** and **React.js** to provide precise 3D navigation and enhance the campus exploration experience.
 
-## Available Scripts
+## 🚀 Features
+- **3D Indoor Navigation**: Navigate through SRM University with accurate indoor positioning.
+- **Custom Map Integration**: Interactive 3D maps with real-time location tracking.
+- **Info**: Displays additional location information when interacting with the map.
 
-In the project directory, you can run:
+## 🛠️ Tech Stack
+- **Frontend**: React.js, Tailwind CSS
+- **Mapping & Navigation**: Mapbox GL JS
+- **State Management**: Context API
+- **Styling**: Tailwind CSS
 
-### `npm start`
+## 📂 Project Structure
+```
+SRMLOCUS/
+│── public/               # Static assets
+│   ├── img/              # Images and icons
+│   ├── index.html        # Main HTML file
+│   ├── manifest.json     # Web app manifest
+│── src/                  # Source files
+│   ├── components/       # React components
+│   │   ├── FloorSelector.js   # Floor switching functionality
+│   │   ├── MapContext.js      # Context API for map state
+│   │   ├── MapView.js         # Main 3D map rendering
+│   │   ├── ModalPopup.css     # Popup styles
+│   │   ├── Navbar.js          # Navigation bar
+│   ├── data/             # JSON data for campus locations
+│   ├── App.js            # Main App component
+│   ├── index.js          # Entry point
+│── .env.local            # Environment variables
+│── package.json          # Project dependencies
+│── README.md             # Project documentation
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Installation & Setup
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/JaiRajGunnu/SRM-Xplorer-3D.git
+   cd srm-xplorer-3d
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Set up environment variables:**
+   - Create a `.env.local` file.
+   - Add your **Mapbox Access Token**:
+     ```env
+     REACT_APP_MAPBOX_ACCESS_TOKEN=your_mapbox_token_here
+     ```
+4. **Run the project:**
+   ```sh
+   npm start
+   ```
+5. Open `http://localhost:3000` in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🤝 Contributing
+Feel free to submit issues and pull requests. Contributions are welcome!
 
-### `npm test`
+## 📜 License
+This project is licensed under the MIT License.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+Made with ❤️ for SRM by Jai Raj Gunnu
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
