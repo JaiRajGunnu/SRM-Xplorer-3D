@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import MapView from './components/MapView';
 import { MapProvider } from './components/MapContext';
 
+
 function App() {
   return (
     <MapProvider>
