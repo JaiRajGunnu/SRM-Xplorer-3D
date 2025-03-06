@@ -8,7 +8,7 @@ SRM Xplorer 3D is an interactive navigation web application for SRM University. 
 - **Info**: Displays additional location information when interacting with the map.
 
 ## 🛠️ Tech Stack
-- **Frontend**: React.js, Tailwind CSS
+- **Frontend**: React.js
 - **Mapping & Navigation**: Mapbox GL JS
 - **State Management**: Context API
 - **Styling**: Tailwind CSS
